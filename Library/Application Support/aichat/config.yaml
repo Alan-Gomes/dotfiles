@@ -1,0 +1,10 @@
+# see https://github.com/sigoden/aichat/blob/main/config.example.yaml
+
+model: GitHub:gpt-4.1-mini
+clients:
+- type: openai-compatible
+  name: GitHub
+  api_base: https://models.inference.ai.azure.com
+  models:
+  - name: gpt-4.1-mini
+    max_input_tokens: 8000
