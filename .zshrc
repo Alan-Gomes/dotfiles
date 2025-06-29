@@ -133,3 +133,5 @@ export PATH="$PATH:$HOME/.lmstudio/bin"
 alias db-token="(echo | az login > /dev/null) && (az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv 2> /dev/null | tee >(pbcopy))"
 
 alias ai="aichat -e"
+
+alias repos="cd ~/repos"
