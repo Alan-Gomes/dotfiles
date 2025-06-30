@@ -133,6 +133,7 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-7 = 'workspace 7'
     ctrl-8 = 'workspace 8'
     ctrl-9 = 'workspace 9'
+    ctrl-0 = 'workspace 10'
 #    ctrl-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
 #    ctrl-b = 'workspace B'
 #    ctrl-c = 'workspace C'
@@ -166,6 +167,7 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-shift-7 = 'move-node-to-workspace 7'
     ctrl-shift-8 = 'move-node-to-workspace 8'
     ctrl-shift-9 = 'move-node-to-workspace 9'
+    ctrl-shift-0 = 'move-node-to-workspace 10'
 #    ctrl-shift-a = 'move-node-to-workspace A'
 #    ctrl-shift-b = 'move-node-to-workspace B'
 #    ctrl-shift-c = 'move-node-to-workspace C'
@@ -227,6 +229,42 @@ automatically-unhide-macos-hidden-apps = false
     run = ['layout floating']
 
 #
+# Karabiner windows should be floating
+#
+
+[[on-window-detected]]
+    if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
+    check-further-callbacks = true
+    run = ['layout floating']
+
+#
+# Move chromium to workspace 1
+#
+
+[[on-window-detected]]
+    if.app-id = 'org.chromium.Chromium'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 1']
+
+#
+# Move VSCode to workspace 2
+#
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.VSCode'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 2']
+
+#
+# Move youtube music to workspace 7
+#
+
+[[on-window-detected]]
+    if.app-id = 'com.github.th-ch.youtube-music'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace 7']
+
+#
 # Move mail to workspace 8
 #
 
@@ -248,3 +286,15 @@ automatically-unhide-macos-hidden-apps = false
     if.app-id = 'com.hnc.Discord'
     check-further-callbacks = true
     run = ['move-node-to-workspace 9']
+
+[workspace-to-monitor-force-assignment]
+    1 = ['lg ultragear', 'built-in.*']
+    2 = ['lg ultragear', 'built-in.*']
+    3 = ['lg ultragear', 'built-in.*']
+    4 = ['lg ultragear', 'built-in.*']
+    5 = ['lg ultragear', 'built-in.*']
+    6 = ['built-in.*', 'lg ultragear']
+    7 = ['built-in.*', 'lg ultragear']
+    8 = ['built-in.*', 'lg ultragear']
+    9 = ['built-in.*', 'lg ultragear']
+    
