@@ -128,8 +128,6 @@ unalias brew 2>/dev/null
 brewser="homebrew"
 alias brew='sudo -Hu '$brewser' brew'
 
-export PATH="$PATH:$HOME/.lmstudio/bin"
-
 alias db-token="(echo | az login > /dev/null) && (az account get-access-token --resource https://ossrdbms-aad.database.windows.net --query accessToken --output tsv 2> /dev/null | tee >(pbcopy))"
 
 alias ai="aichat -e"
