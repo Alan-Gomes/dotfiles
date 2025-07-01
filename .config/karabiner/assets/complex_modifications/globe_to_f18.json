@@ -1,0 +1,16 @@
+{
+	"title": "Globe to F18",
+	"rules": [
+		{
+			"description": "Change Globe (fn) to F18, if alone",
+			"manipulators": [
+				{
+					"from": { "key_code": "fn" },
+					"to": { "key_code": "fn" },
+					"to_if_alone": [{ "key_code": "f18" }],
+					"type": "basic"
+				}
+			]
+		}
+	]
+}
