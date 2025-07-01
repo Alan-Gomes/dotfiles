@@ -471,6 +471,58 @@
 						}
 					],
 					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "w",
+						"modifiers": { "mandatory": ["right_option"] }
+					},
+					"to": [
+						{
+							"key_code": "w",
+							"modifiers": ["left_control"]
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "w",
+						"modifiers": { "mandatory": ["right_option", "shift"] }
+					},
+					"to": [
+						{
+							"key_code": "w",
+							"modifiers": ["left_control", "shift"]
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "s",
+						"modifiers": { "mandatory": ["right_option"] }
+					},
+					"to": [
+						{
+							"key_code": "s",
+							"modifiers": ["left_control"]
+						}
+					],
+					"type": "basic"
+				},
+				{
+					"from": {
+						"key_code": "s",
+						"modifiers": { "mandatory": ["right_option", "shift"] }
+					},
+					"to": [
+						{
+							"key_code": "s",
+							"modifiers": ["left_control", "shift"]
+						}
+					],
+					"type": "basic"
 				}
 			]
 		}
