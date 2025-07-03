@@ -1,0 +1,33 @@
+{
+	"title": "Map mouse buttons to F keys",
+	"rules": [
+		{
+			"description": "Change mouse front button to F19",
+			"manipulators": [
+				{
+					"from": {
+						"pointing_button": "button5"
+					},
+					"to": {
+						"key_code": "f19"
+					},
+					"type": "basic"
+				}
+			]
+		},
+		{
+			"description": "Change mouse back button to F20",
+			"manipulators": [
+				{
+					"from": {
+						"pointing_button": "button4"
+					},
+					"to": {
+						"key_code": "f20"
+					},
+					"type": "basic"
+				}
+			]
+		}
+	]
+}

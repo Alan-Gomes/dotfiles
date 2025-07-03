@@ -110,6 +110,9 @@ automatically-unhide-macos-hidden-apps = false
     ctrl-up    = 'focus --boundaries-action wrap-around-the-workspace up'
     ctrl-right = 'focus --boundaries-action wrap-around-the-workspace right'
 
+    f19 = 'focus --boundaries-action wrap-around-the-workspace left' # f19 is mapped to mouse front button
+    f20 = 'focus --boundaries-action wrap-around-the-workspace right' # f20 is mapped to mouse back button
+
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
     ctrl-shift-left = 'move left'
     ctrl-shift-down = 'move down'
