@@ -261,6 +261,15 @@ automatically-unhide-macos-hidden-apps = true
     run = ['move-node-to-workspace 1']
 
 #
+# Makes bitwarden extension window float
+#
+[[on-window-detected]]
+    if.app-id = 'org.chromium.Chromium'
+    if.window-title-regex-substring = '^Bitwarden$'
+    check-further-callbacks = true
+    run = ['layout floating']
+
+#
 # Move VSCode to workspace 2
 #
 
