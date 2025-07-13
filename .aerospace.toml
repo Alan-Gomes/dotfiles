@@ -1,6 +1,39 @@
 # Place a copy of this config to ~/.aerospace.toml
 # After that, you can edit ~/.aerospace.toml to your liking
 
+# APPLICATION WORKSPACE SETUP:
+# This config includes automatic workspace assignment for applications.
+# Each application has two configurations:
+# 1. Window detection rule: [[on-window-detected]] - automatically moves app windows to designated workspace
+# 2. Keyboard binding: alt-{letter} - launches app and switches to its workspace
+#
+# Current application mappings:
+# | Workspace | Application(s)          | Shortcut | App Path/Command                     | Preferred Monitor |
+# |-----------|-------------------------|----------|--------------------------------------|-------------------|
+# | C         | Visual Studio Code      | alt-c    | /Applications/Visual Studio Code.app | built-in          |
+# | D         | Discord                 | alt-d    | /Applications/Discord.app            | lg ultragear      |
+# | F         | Finder                  | alt-f    | /Applications/Finder.app             | lg ultragear      |
+# | M         | Mail                    | alt-m    | /Applications/Mail.app               | lg ultragear      |
+# | O         | Obsidian                | alt-o    | /Applications/Obsidian.app           | lg ultragear      |
+# | P         | Postman                 | alt-p    | /Applications/Postman.app            | built-in          |
+# | T         | Microsoft Teams         | alt-t    | /Applications/Microsoft Teams.app    | lg ultragear      |
+# | W         | Chromium                | alt-w    | /Applications/Chromium.app           | built-in          |
+# | Y         | YouTube Music           | alt-y    | /Applications/YouTube Music.app      | lg ultragear      |
+# | 1         | N/A                     | alt-1    | N/A                                  | built-in          |
+# | 2         | N/A                     | alt-2    | N/A                                  | built-in          |
+# | 3         | N/A                     | alt-3    | N/A                                  | built-in          |
+# | 4         | N/A                     | alt-4    | N/A                                  | built-in          |
+# | 5         | N/A                     | alt-5    | N/A                                  | built-in          |
+# | 6         | N/A                     | alt-6    | N/A                                  | lg ultragear      |
+# | 7         | N/A                     | alt-7    | N/A                                  | lg ultragear      |
+# | 8         | N/A                     | alt-8    | N/A                                  | lg ultragear      |
+# | 9         | N/A                     | alt-9    | N/A                                  | lg ultragear      |
+#
+# To add new applications:
+# 1. Add [[on-window-detected]] rule with app-name-regex-substring matching
+# 2. Update the corresponding alt-{letter} binding in [mode.main.binding]
+# 3. Update this documentation comment
+
 # You can use it to add commands that run after login to macOS user session.
 # 'start-at-login' needs to be 'true' for 'after-login-command' to work
 # Available commands: https://nikitabobko.github.io/AeroSpace/commands
@@ -43,19 +76,9 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = true
 
-# Possible values: (qwerty|dvorak|colemak)
-# See https://nikitabobko.github.io/AeroSpace/guide#key-mapping
 [key-mapping]
     preset = 'qwerty'
 
-# Gaps between windows (inner-*) and between monitor edges (outer-*).
-# Possible values:
-# - Constant:     gaps.outer.top = 8
-# - Per monitor:  gaps.outer.top = [{ monitor.main = 16 }, { monitor."some-pattern" = 32 }, 24]
-#                 In this example, 24 is a default value when there is no match.
-#                 Monitor pattern is the same as for 'workspace-to-monitor-force-assignment'.
-#                 See:
-#                 https://nikitabobko.github.io/AeroSpace/guide#assign-workspaces-to-monitors
 [gaps]
     inner.horizontal = 4
     inner.vertical =   4
@@ -64,10 +87,6 @@ automatically-unhide-macos-hidden-apps = true
     outer.top =        4
     outer.right =      4
 
-# 'main' binding mode declaration
-# See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
-# 'main' binding mode must be always presented
-# Fallback value (if you omit the key): mode.main.binding = {}
 [mode.main.binding]
 
     # All possible keys:
@@ -88,145 +107,118 @@ automatically-unhide-macos-hidden-apps = true
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-    # Open up terminal with alt + enter shortcut
-     ctrl-enter = '''exec-and-forget osascript -e '
-     tell application "Ghostty"
-       if it is running then
-         activate
-         tell application "System Events" to keystroke "n" using {command down}
-       else
-         activate
-       end if
-     end tell'
-    '''
+    alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
-    ctrl-slash = 'layout tiles horizontal vertical'
-    ctrl-comma = 'layout accordion horizontal vertical'
+    alt-slash = 'layout tiles horizontal vertical'
+    alt-comma = 'layout accordion horizontal vertical'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#focus
-    ctrl-left  = 'focus --boundaries-action wrap-around-the-workspace left'
-    ctrl-down  = 'focus --boundaries-action wrap-around-the-workspace down'
-    ctrl-up    = 'focus --boundaries-action wrap-around-the-workspace up'
-    ctrl-right = 'focus --boundaries-action wrap-around-the-workspace right'
+    alt-left  = 'focus --boundaries-action wrap-around-the-workspace left'
+    alt-down  = 'focus --boundaries-action wrap-around-the-workspace down'
+    alt-up    = 'focus --boundaries-action wrap-around-the-workspace up'
+    alt-right = 'focus --boundaries-action wrap-around-the-workspace right'
 
     f19 = 'focus --boundaries-action wrap-around-the-workspace left' # f19 is mapped to mouse front button
     f20 = 'focus --boundaries-action wrap-around-the-workspace right' # f20 is mapped to mouse back button
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move
-    ctrl-shift-left = 'move left'
-    ctrl-shift-down = 'move down'
-    ctrl-shift-up = 'move up'
-    ctrl-shift-right = 'move right'
+    alt-shift-left = 'move left'
+    alt-shift-down = 'move down'
+    alt-shift-up = 'move up'
+    alt-shift-right = 'move right'
 
-    ctrl-f = 'fullscreen'
-    ctrl-shift-f = 'macos-native-fullscreen'
+    ctrl-alt-f = 'fullscreen'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#resize
-    ctrl-minus = 'resize smart -50'
-    ctrl-equal = 'resize smart +50'
+    alt-minus = 'resize smart -50'
+    alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    ctrl-1 = 'workspace 1'
-    ctrl-2 = 'workspace 2'
-    ctrl-3 = 'workspace 3'
-    ctrl-4 = 'workspace 4'
-    ctrl-5 = 'workspace 5'
-    ctrl-6 = 'workspace 6'
-    ctrl-7 = 'workspace 7'
-    ctrl-8 = 'workspace 8'
-    ctrl-9 = 'workspace 9'
-    ctrl-0 = 'workspace 10'
-#    ctrl-a = 'workspace A' # In your config, you can drop workspace bindings that you don't need
-#    ctrl-b = 'workspace B'
-#    ctrl-c = 'workspace C'
-#    ctrl-d = 'workspace D'
-#    ctrl-e = 'workspace E'
-#    ctrl-f = 'workspace F'
-#    ctrl-g = 'workspace G'
-#    ctrl-i = 'workspace I'
-#    ctrl-m = 'workspace M'
-#    ctrl-n = 'workspace N'
-#    ctrl-o = 'workspace O'
-#    ctrl-p = 'workspace P'
-#    ctrl-q = 'workspace Q'
-#    ctrl-r = 'workspace R'
-#    ctrl-s = 'workspace S'
-#    ctrl-t = 'workspace T'
-#    ctrl-u = 'workspace U'
-#    ctrl-v = 'workspace V'
-#    ctrl-w = 'workspace W'
-#    ctrl-x = 'workspace X'
-#    ctrl-y = 'workspace Y'
-#    ctrl-z = 'workspace Z'
+    alt-1 = 'workspace 1'
+    alt-2 = 'workspace 2'
+    alt-3 = 'workspace 3'
+    alt-4 = 'workspace 4'
+    alt-5 = 'workspace 5'
+    alt-6 = 'workspace 6'
+    alt-7 = 'workspace 7'
+    alt-8 = 'workspace 8'
+    alt-9 = 'workspace 9'
+    alt-0 = 'workspace 10'
+    alt-a = 'workspace A'
+    alt-b = 'workspace B'
+    alt-c = ['exec-and-forget open /Applications/Visual\ Studio\ Code.app', 'workspace C']
+    alt-d = ['exec-and-forget open /Applications/Discord.app', 'workspace D']
+    alt-e = 'workspace E'
+    alt-f = ['exec-and-forget open ~', 'workspace F']
+    alt-g = 'workspace G'
+    alt-i = 'workspace I'
+    alt-m = ['exec-and-forget open /System/Applications/Mail.app', 'workspace M']
+    alt-n = 'workspace N'
+    alt-o = ['exec-and-forget open /Applications/Obsidian.app', 'workspace O']
+    alt-p = ['exec-and-forget open /Applications/Postman.app', 'workspace P']
+    alt-q = 'workspace Q'
+    alt-r = 'workspace R'
+    alt-s = 'workspace S'
+    alt-t = ['exec-and-forget open /Applications/Microsoft\ Teams.app', 'workspace T']
+    alt-u = 'workspace U'
+    alt-v = 'workspace V'
+    alt-w = ['exec-and-forget open /Applications/Chromium.app', 'workspace W']
+    alt-x = 'workspace X'
+    alt-y = ['exec-and-forget open /Applications/YouTube\ Music.app', 'workspace Y']
+    alt-z = 'workspace Z'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
-    ctrl-shift-1 = 'move-node-to-workspace 1'
-    ctrl-shift-2 = 'move-node-to-workspace 2'
-    ctrl-shift-3 = 'move-node-to-workspace 3'
-    ctrl-shift-4 = 'move-node-to-workspace 4'
-    ctrl-shift-5 = 'move-node-to-workspace 5'
-    ctrl-shift-6 = 'move-node-to-workspace 6'
-    ctrl-shift-7 = 'move-node-to-workspace 7'
-    ctrl-shift-8 = 'move-node-to-workspace 8'
-    ctrl-shift-9 = 'move-node-to-workspace 9'
-    ctrl-shift-0 = 'move-node-to-workspace 10'
-#    ctrl-shift-a = 'move-node-to-workspace A'
-#    ctrl-shift-b = 'move-node-to-workspace B'
-#    ctrl-shift-c = 'move-node-to-workspace C'
-#    ctrl-shift-d = 'move-node-to-workspace D'
-#    ctrl-shift-e = 'move-node-to-workspace E'
-#    ctrl-shift-f = 'move-node-to-workspace F'
-#    ctrl-shift-g = 'move-node-to-workspace G'
-#    ctrl-shift-i = 'move-node-to-workspace I'
-#    ctrl-shift-m = 'move-node-to-workspace M'
-#    ctrl-shift-n = 'move-node-to-workspace N'
-#    ctrl-shift-o = 'move-node-to-workspace O'
-#    ctrl-shift-p = 'move-node-to-workspace P'
-#    ctrl-shift-q = 'move-node-to-workspace Q'
-#    ctrl-shift-r = 'move-node-to-workspace R'
-#    ctrl-shift-s = 'move-node-to-workspace S'
-#    ctrl-shift-t = 'move-node-to-workspace T'
-#    ctrl-shift-u = 'move-node-to-workspace U'
-#    ctrl-shift-v = 'move-node-to-workspace V'
-#    ctrl-shift-w = 'move-node-to-workspace W'
-#    ctrl-shift-x = 'move-node-to-workspace X'
-#    ctrl-shift-y = 'move-node-to-workspace Y'
-#    ctrl-shift-z = 'move-node-to-workspace Z'
+    alt-shift-1 = 'move-node-to-workspace 1'
+    alt-shift-2 = 'move-node-to-workspace 2'
+    alt-shift-3 = 'move-node-to-workspace 3'
+    alt-shift-4 = 'move-node-to-workspace 4'
+    alt-shift-5 = 'move-node-to-workspace 5'
+    alt-shift-6 = 'move-node-to-workspace 6'
+    alt-shift-7 = 'move-node-to-workspace 7'
+    alt-shift-8 = 'move-node-to-workspace 8'
+    alt-shift-9 = 'move-node-to-workspace 9'
+    alt-shift-0 = 'move-node-to-workspace 10'
+    alt-shift-a = 'move-node-to-workspace A'
+    alt-shift-b = 'move-node-to-workspace B'
+    alt-shift-c = 'move-node-to-workspace C'
+    alt-shift-d = 'move-node-to-workspace D'
+    alt-shift-e = 'move-node-to-workspace E'
+    alt-shift-f = 'move-node-to-workspace F'
+    alt-shift-g = 'move-node-to-workspace G'
+    alt-shift-i = 'move-node-to-workspace I'
+    alt-shift-m = 'move-node-to-workspace M'
+    alt-shift-n = 'move-node-to-workspace N'
+    alt-shift-o = 'move-node-to-workspace O'
+    alt-shift-p = 'move-node-to-workspace P'
+    alt-shift-q = 'move-node-to-workspace Q'
+    alt-shift-r = 'move-node-to-workspace R'
+    alt-shift-s = 'move-node-to-workspace S'
+    alt-shift-t = 'move-node-to-workspace T'
+    alt-shift-u = 'move-node-to-workspace U'
+    alt-shift-v = 'move-node-to-workspace V'
+    alt-shift-w = 'move-node-to-workspace W'
+    alt-shift-x = 'move-node-to-workspace X'
+    alt-shift-y = 'move-node-to-workspace Y'
+    alt-shift-z = 'move-node-to-workspace Z'
 
-    # See: https://nikitabobko.github.io/AeroSpace/commands#workspace-back-and-forth
-    ctrl-tab = 'workspace-back-and-forth'
-    # See: https://nikitabobko.github.io/AeroSpace/commands#move-workspace-to-monitor
-    ctrl-shift-tab = 'move-workspace-to-monitor --wrap-around next'
-
-    ctrl-w = 'move-node-to-monitor --wrap-around --focus-follows-window up'
-    ctrl-s = 'move-node-to-monitor --wrap-around --focus-follows-window down'
-
-    # See: https://nikitabobko.github.io/AeroSpace/commands#mode
-    ctrl-shift-semicolon = 'mode service'
+    alt-tab = 'workspace-back-and-forth'
+    alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
+    alt-shift-semicolon = 'mode service'
 
 # 'service' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.service.binding]
     esc = ['reload-config', 'mode main']
-    # r = ['flatten-workspace-tree', 'mode main'] # reset layout
-    # f = ['layout floating tiling', 'mode main'] # Toggle between floating and tiling layout
     backspace = ['close-all-windows-but-current', 'mode main']
 
-    # sticky is not yet supported https://github.com/nikitabobko/AeroSpace/issues/2
-    #s = ['layout sticky tiling', 'mode main']
-
-    ctrl-shift-left = ['join-with left', 'mode main']
-    ctrl-shift-down = ['join-with down', 'mode main']
-    ctrl-shift-up = ['join-with up', 'mode main']
-    ctrl-shift-right = ['join-with right', 'mode main']
-
-#    down = 'volume down'
-#    up = 'volume up'
-#    shift-down = ['volume set 0', 'mode main']
+    alt-shift-left = ['join-with left', 'mode main']
+    alt-shift-down = ['join-with down', 'mode main']
+    alt-shift-up = ['join-with up', 'mode main']
+    alt-shift-right = ['join-with right', 'mode main']
 
 #
-# Bitwarden windows should be floating
+# Floating windows
 #
 
 [[on-window-detected]]
@@ -234,90 +226,92 @@ automatically-unhide-macos-hidden-apps = true
     check-further-callbacks = true
     run = ['layout floating']
 
-#
-# Karabiner windows should be floating
-#
-
 [[on-window-detected]]
     if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
     check-further-callbacks = true
     run = ['layout floating']
+
 [[on-window-detected]]
     if.app-id = 'org.pqrs.Karabiner-EventViewer'
     check-further-callbacks = true
     run = ['layout floating']
+
 [[on-window-detected]]
     if.app-id = 'pl.maketheweb.cleanshotx'
     check-further-callbacks = true
     run = ['layout floating']
 
-#
-# Move chromium to workspace 1
-#
-
-[[on-window-detected]]
-    if.app-id = 'org.chromium.Chromium'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace 1']
-
-#
-# Makes bitwarden extension window float
-#
 [[on-window-detected]]
     if.app-id = 'org.chromium.Chromium'
     if.window-title-regex-substring = '^Bitwarden$'
     check-further-callbacks = true
     run = ['layout floating']
 
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    check-further-callbacks = true
+    run = ['layout floating']
+
 #
-# Move VSCode to workspace 2
+# Workspace assignments
 #
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.VSCode'
     check-further-callbacks = true
-    run = ['move-node-to-workspace 2']
-
-#
-# Move youtube music to workspace 7
-#
-
-[[on-window-detected]]
-    if.app-id = 'com.github.th-ch.youtube-music'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace 7']
-
-#
-# Move mail to workspace 8
-#
-
-[[on-window-detected]]
-    if.app-id = 'com.apple.mail'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace 8']
-
-#
-# Move teams and discord to workspace 9
-#
-
-[[on-window-detected]]
-    if.app-id = 'com.microsoft.teams2'
-    check-further-callbacks = true
-    run = ['move-node-to-workspace 9']
+    run = ['move-node-to-workspace C']
 
 [[on-window-detected]]
     if.app-id = 'com.hnc.Discord'
     check-further-callbacks = true
-    run = ['move-node-to-workspace 9']
+    run = ['move-node-to-workspace D']
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.mail'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace M']
+
+[[on-window-detected]]
+    if.app-id = 'md.obsidian'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace O']
+
+[[on-window-detected]]
+    if.app-id = 'com.postmanlabs.mac'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace P']
+
+[[on-window-detected]]
+    if.app-id = 'com.microsoft.teams2'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace T']
+
+[[on-window-detected]]
+    if.app-id = 'org.chromium.Chromium'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace W']
+
+[[on-window-detected]]
+    if.app-id = 'com.github.th-ch.youtube-music'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace Y']
 
 [workspace-to-monitor-force-assignment]
-    1 = ['lg ultragear', 'built-in.*']
-    2 = ['lg ultragear', 'built-in.*']
-    3 = ['lg ultragear', 'built-in.*']
-    4 = ['lg ultragear', 'built-in.*']
-    5 = ['lg ultragear', 'built-in.*']
-    6 = ['built-in.*', 'lg ultragear']
-    7 = ['built-in.*', 'lg ultragear']
-    8 = ['built-in.*', 'lg ultragear']
-    9 = ['built-in.*', 'lg ultragear']
-    
+    C = ['built-in.*', 'lg ultragear']
+    D = ['lg ultragear', 'built-in.*']
+    F = ['lg ultragear', 'built-in.*']
+    M = ['lg ultragear', 'built-in.*']
+    O = ['lg ultragear', 'built-in.*']
+    P = ['built-in.*', 'lg ultragear']
+    T = ['lg ultragear', 'built-in.*']
+    W = ['built-in.*', 'lg ultragear']
+    Y = ['lg ultragear', 'built-in.*']
+    1 = ['built-in.*', 'lg ultragear']
+    2 = ['built-in.*', 'lg ultragear']
+    3 = ['built-in.*', 'lg ultragear']
+    4 = ['built-in.*', 'lg ultragear']
+    5 = ['built-in.*', 'lg ultragear']
+    6 = ['lg ultragear', 'built-in.*']
+    7 = ['lg ultragear', 'built-in.*']
+    8 = ['lg ultragear', 'built-in.*'] 
+    9 = ['lg ultragear', 'built-in.*'] 
