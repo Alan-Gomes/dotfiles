@@ -2,8 +2,6 @@
 	name = Alan Gomes
 	email = contato@alangomes.dev
 	signingkey = ~/.ssh/bw_macbook.pub
-[core]
-	editor = cot -w
 [gpg]
 	format = ssh
 [commit]

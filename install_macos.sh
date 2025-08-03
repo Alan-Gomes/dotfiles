@@ -1,5 +1,6 @@
 #!/bin/zsh
 
+_link_path .scripts/on_workspace_change.sh
 _link_path .aerospace.toml
 _link_path .config/karabiner/assets/complex_modifications/globe_to_f18.json
 _link_path .config/karabiner/assets/complex_modifications/mouse_buttons.json
@@ -14,7 +15,7 @@ aerospace reload-config
 # =============================================================================
 
 # Set Dock icon size
-defaults write com.apple.dock tilesize -int 36
+defaults write com.apple.dock tilesize -int 64
 
 # Set Dock magnification size
 defaults write com.apple.dock largesize -int 54

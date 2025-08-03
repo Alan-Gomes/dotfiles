@@ -10,6 +10,7 @@
 # Current application mappings:
 # | Workspace | Application(s)          | Shortcut | App Path/Command                     | Preferred Monitor |
 # |-----------|-------------------------|----------|--------------------------------------|-------------------|
+# | B         | Bitwarden               | alt-b    | /Applications/Bitwarden.app          | lg ultragear      |
 # | C         | Visual Studio Code      | alt-c    | /Applications/Visual Studio Code.app | built-in          |
 # | D         | Discord                 | alt-d    | /Applications/Discord.app            | lg ultragear      |
 # | F         | Finder                  | alt-f    | /Applications/Finder.app             | lg ultragear      |
@@ -107,7 +108,7 @@ automatically-unhide-macos-hidden-apps = true
     # All possible commands: https://nikitabobko.github.io/AeroSpace/commands
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#exec-and-forget
-    alt-enter = 'exec-and-forget open -n /Applications/Ghostty.app'
+    alt-enter = 'exec-and-forget open /System/Applications/Utilities/Terminal.app'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#layout
     alt-slash = 'layout tiles horizontal vertical'
@@ -135,38 +136,42 @@ automatically-unhide-macos-hidden-apps = true
     alt-equal = 'resize smart +50'
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#workspace
-    alt-1 = 'workspace 1'
-    alt-2 = 'workspace 2'
-    alt-3 = 'workspace 3'
-    alt-4 = 'workspace 4'
-    alt-5 = 'workspace 5'
-    alt-6 = 'workspace 6'
-    alt-7 = 'workspace 7'
-    alt-8 = 'workspace 8'
-    alt-9 = 'workspace 9'
-    alt-0 = 'workspace 10'
-    alt-a = 'workspace A'
-    alt-b = 'workspace B'
-    alt-c = ['exec-and-forget open /Applications/Visual\ Studio\ Code.app', 'workspace C']
-    alt-d = ['exec-and-forget open /Applications/Discord.app', 'workspace D']
-    alt-e = 'workspace E'
-    alt-f = ['exec-and-forget open ~', 'workspace F']
-    alt-g = 'workspace G'
-    alt-i = 'workspace I'
-    alt-m = ['exec-and-forget open /System/Applications/Mail.app', 'workspace M']
-    alt-n = 'workspace N'
-    alt-o = ['exec-and-forget open /Applications/Obsidian.app', 'workspace O']
-    alt-p = ['exec-and-forget open /Applications/Postman.app', 'workspace P']
-    alt-q = 'workspace Q'
-    alt-r = 'workspace R'
-    alt-s = 'workspace S'
-    alt-t = ['exec-and-forget open /Applications/Microsoft\ Teams.app', 'workspace T']
-    alt-u = 'workspace U'
-    alt-v = 'workspace V'
-    alt-w = ['exec-and-forget open /Applications/Chromium.app', 'workspace W']
-    alt-x = 'workspace X'
-    alt-y = ['exec-and-forget open /Applications/YouTube\ Music.app', 'workspace Y']
-    alt-z = 'workspace Z'
+    alt-1 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 1', 'workspace 1']
+    alt-2 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 2', 'workspace 2']
+    alt-3 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 3', 'workspace 3']
+    alt-4 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 4', 'workspace 4']
+    alt-5 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 5', 'workspace 5']
+    alt-6 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 6', 'workspace 6']
+    alt-7 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 7', 'workspace 7']
+    alt-8 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 8', 'workspace 8']
+    alt-9 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 9', 'workspace 9']
+    alt-0 = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh 10', 'workspace 10']
+    alt-a = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh A', 'workspace A']
+    alt-b = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh B', 'workspace B']
+    alt-c = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh C', 'workspace C']
+    alt-d = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh D', 'workspace D']
+    alt-e = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh E', 'workspace E']
+    alt-f = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh F', 'workspace F']
+    alt-g = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh G', 'workspace G']
+    alt-h = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh H', 'workspace H']
+    alt-i = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh I', 'workspace I']
+    alt-j = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh J', 'workspace J']
+    alt-k = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh K', 'workspace K']
+    alt-l = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh L', 'workspace L']
+    alt-m = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh M', 'workspace M']
+    alt-n = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh N', 'workspace N']
+    alt-o = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh O', 'workspace O']
+    alt-p = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh P', 'workspace P']
+    alt-q = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh Q', 'workspace Q']
+    alt-r = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh R', 'workspace R']
+    alt-s = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh S', 'workspace S']
+    alt-t = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh T', 'workspace T']
+    alt-u = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh U', 'workspace U']
+    alt-v = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh V', 'workspace V']
+    alt-w = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh W', 'workspace W']
+    alt-x = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh X', 'workspace X']
+    alt-y = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh Y', 'workspace Y']
+    alt-z = ['exec-and-forget /bin/zsh ~/.scripts/on_workspace_change.sh Z', 'workspace Z']
 
     # See: https://nikitabobko.github.io/AeroSpace/commands#move-node-to-workspace
     alt-shift-1 = 'move-node-to-workspace 1'
@@ -186,7 +191,11 @@ automatically-unhide-macos-hidden-apps = true
     alt-shift-e = 'move-node-to-workspace E'
     alt-shift-f = 'move-node-to-workspace F'
     alt-shift-g = 'move-node-to-workspace G'
+    alt-shift-h = 'move-node-to-workspace H'
     alt-shift-i = 'move-node-to-workspace I'
+    alt-shift-j = 'move-node-to-workspace J'
+    alt-shift-k = 'move-node-to-workspace K'
+    alt-shift-l = 'move-node-to-workspace L'
     alt-shift-m = 'move-node-to-workspace M'
     alt-shift-n = 'move-node-to-workspace N'
     alt-shift-o = 'move-node-to-workspace O'
@@ -222,11 +231,6 @@ automatically-unhide-macos-hidden-apps = true
 #
 
 [[on-window-detected]]
-    if.app-id = 'com.bitwarden.desktop'
-    check-further-callbacks = true
-    run = ['layout floating']
-
-[[on-window-detected]]
     if.app-id = 'org.pqrs.Karabiner-Elements.Settings'
     check-further-callbacks = true
     run = ['layout floating']
@@ -255,6 +259,11 @@ automatically-unhide-macos-hidden-apps = true
 #
 # Workspace assignments
 #
+
+[[on-window-detected]]
+    if.app-id = 'com.bitwarden.desktop'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace B']
 
 [[on-window-detected]]
     if.app-id = 'com.microsoft.VSCode'
@@ -292,11 +301,17 @@ automatically-unhide-macos-hidden-apps = true
     run = ['move-node-to-workspace W']
 
 [[on-window-detected]]
+    if.app-id = 'app.zen-browser.zen'
+    check-further-callbacks = true
+    run = ['move-node-to-workspace W']
+
+[[on-window-detected]]
     if.app-id = 'com.github.th-ch.youtube-music'
     check-further-callbacks = true
     run = ['move-node-to-workspace Y']
 
 [workspace-to-monitor-force-assignment]
+    B = ['lg ultragear', 'built-in.*']
     C = ['built-in.*', 'lg ultragear']
     D = ['lg ultragear', 'built-in.*']
     F = ['lg ultragear', 'built-in.*']
