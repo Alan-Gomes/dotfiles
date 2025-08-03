@@ -252,6 +252,12 @@ automatically-unhide-macos-hidden-apps = true
     run = ['layout floating']
 
 [[on-window-detected]]
+    if.app-id = 'app.zen-browser.zen'
+    if.window-title-regex-substring = '^Extension: '
+    check-further-callbacks = true
+    run = ['layout floating']
+
+[[on-window-detected]]
     if.app-id = 'com.apple.finder'
     check-further-callbacks = true
     run = ['layout floating']
